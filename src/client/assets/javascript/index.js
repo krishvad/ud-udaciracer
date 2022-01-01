@@ -150,13 +150,11 @@ async function runCountdown() {
 
 		})
 	} catch(error) {
-		console.log(error);
+		console.error(error);
 	}
 }
 
 function handleSelectPodRacer(target) {
-	console.log("selected a pod", target.id)
-
 	// remove class selected from all racer options
 	const selected = document.querySelector('#racers .selected')
 	if(selected) {
@@ -171,8 +169,6 @@ function handleSelectPodRacer(target) {
 }
 
 function handleSelectTrack(target) {
-	console.log("selected a track", target.id)
-
 	// remove class selected from all track options
 	const selected = document.querySelector('#tracks .selected')
 	if(selected) {
@@ -187,7 +183,6 @@ function handleSelectTrack(target) {
 }
 
 async function handleAccelerate() {
-	console.log("accelerate button clicked")
 	// Invoke the API call to accelerate
 
 	try {
@@ -393,7 +388,7 @@ function createRace(player_id, track_id) {
 		body: JSON.stringify(body)
 	})
 	.then(res => res.json())
-	.catch(err => console.log("Problem with createRace request::", err))
+	.catch(err => console.error("Problem with createRace request::", err))
 }
 
 async function getRace(id) {
