@@ -1,7 +1,7 @@
 // PROVIDED CODE BELOW (LINES 1 - 80) DO NOT REMOVE
 
 // The store will hold all information needed globally
-var store = {
+const store = {
 	track_id: undefined,
 	player_id: undefined,
 	race_id: undefined,
@@ -110,7 +110,7 @@ async function handleCreateRace() {
 function runRace(raceID) {
 	return new Promise(resolve => {
 		const segments = [];
-	// TODO - use Javascript's built in setInterval method to get race info every 500ms
+	// Use Javascript's built in setInterval method to get race info every 500ms
 		const intervalId = setInterval(() => {
 			getRace(raceID)
 			.then(raceInfo => {
@@ -164,7 +164,7 @@ function handleSelectPodRacer(target) {
 	// add class selected to current target
 	target.classList.add('selected')
 
-	// TODO - save the selected racer to the store
+	// Save the selected racer to the store
 	store.player_id = target.id;
 }
 
@@ -178,7 +178,7 @@ function handleSelectTrack(target) {
 	// add class selected to current target
 	target.classList.add('selected')
 
-	// TODO - save the selected track id to the store
+	// save the selected track id to the store
 	store.track_id = target.id;
 }
 
@@ -300,7 +300,7 @@ function resultsView(positions) {
  * @returns
  */
 function raceProgress(positions) {
-	let userPlayer = positions.find(e => e.id === parseInt(store.player_id))
+	const userPlayer = positions.find(e => e.id === parseInt(store.player_id))
 	userPlayer.driver_name += " (you)"
 
 	positions = positions.sort((a, b) => (a.segment > b.segment) ? -1 : 1)
@@ -353,8 +353,6 @@ function defaultFetchOpts() {
 		},
 	}
 }
-
-// TODO - Make a fetch call (with error handling!) to each of the following API endpoints
 
 async function getTracks() {
 	// GET request to `${SERVER}/api/tracks`
